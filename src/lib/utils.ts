@@ -68,7 +68,15 @@ const hexToRgb = (hex: string): RgbValue => {
 };
 
 const parseHex = (hex: string) => {
-  return hex.length === 4 ? hex + hex.slice(1, 4) : hex;
+  let parsedHex = hex.replace('#', ''); // Remove the number sign
+  if (parsedHex.length === 3) {
+    // If hex is a 3 digits, convert it to 6 digits
+    parsedHex = parsedHex
+      .split('')
+      .map((digit: string) => digit + digit)
+      .join('');
+  }
+  return `#${parsedHex}`;
 };
 
 const parseItems = (items: DefaultHit[]): ColorHit[] => {
