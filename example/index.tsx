@@ -25,14 +25,17 @@ const HitComponent = ({ hit }: { hit: Hit }) => {
   const name = splits[0];
   const hex = splits[1];
   return (
-    <div
-      style={{
-        backgroundColor: hex,
-        width: 28,
-        height: 28,
-        border: name === 'white' ? '1px solid grey' : '',
-      }}
-    ></div>
+    <div>
+      <div
+        style={{
+          backgroundColor: hex,
+          width: 28,
+          height: 28,
+          border: name === 'white' ? '1px solid grey' : '',
+        }}
+      />
+      <div>{name}</div>
+    </div>
   );
 };
 
