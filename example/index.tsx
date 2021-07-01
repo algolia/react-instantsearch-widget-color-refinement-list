@@ -7,16 +7,21 @@ import { ColorRefinementList } from '../src';
 
 import { useDebugger, capitalize } from './utils';
 
+import type { Hit } from 'react-instantsearch-core';
+
 const searchClient = algoliasearch(
-  'E8KS2J9PMC',
-  '9a2480ff719c1092d2ef9ad3c6d36cf1'
+  'latency',
+  'af044fb0788d6bb15f807e4420592bc5'
 );
 
 const App = () => {
   const { props } = useDebugger();
 
   return (
-    <InstantSearch indexName="colors" searchClient={searchClient}>
+    <InstantSearch
+      indexName="instantsearch-widget-color-refinement-list"
+      searchClient={searchClient}
+    >
       <main className="container">
         <Panel header="Colors" className="panel__filters">
           <ColorRefinementList
