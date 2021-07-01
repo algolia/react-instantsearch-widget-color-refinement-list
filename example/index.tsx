@@ -1,7 +1,13 @@
 import algoliasearch from 'algoliasearch/lite';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { InstantSearch, SearchBox, Hits, Panel } from 'react-instantsearch-dom';
+import {
+  InstantSearch,
+  SearchBox,
+  Hits,
+  Panel,
+  Pagination,
+} from 'react-instantsearch-dom';
 
 import { ColorRefinementList } from '../src';
 
@@ -13,6 +19,22 @@ const searchClient = algoliasearch(
   'latency',
   'af044fb0788d6bb15f807e4420592bc5'
 );
+
+const HitComponent = ({ hit }: { hit: Hit }) => {
+  const splits = hit.color.split(';');
+  const name = splits[0];
+  const hex = splits[1];
+  return (
+    <div
+      style={{
+        backgroundColor: hex,
+        width: 28,
+        height: 28,
+        border: name === 'white' ? '1px solid grey' : '',
+      }}
+    ></div>
+  );
+};
 
 const App = () => {
   const { props } = useDebugger();
@@ -43,7 +65,8 @@ const App = () => {
 
         <Panel className="panel__results">
           <SearchBox />
-          <Hits />
+          <Hits hitComponent={HitComponent} />
+          <Pagination />
         </Panel>
       </main>
     </InstantSearch>
