@@ -9,6 +9,8 @@ Equivalent of the offcial [RefinementList widget](https://www.algolia.com/doc/ap
 
 This helps the user **quickly visualize** the kind of **color** that you have **in your index**. This is a great widget to refine records within multiple shades of a single color (like **choosing the color of a jean** for example).
 
+![Example](docs/example.gif)
+
 ---
 
 [![MIT](https://img.shields.io/npm/l/@algolia/react-instantsearch-widget-color-refinement-list)](./LICENSE) [![NPM version](https://img.shields.io/npm/v/@algolia/react-instantsearch-widget-color-refinement-list.svg)](https://npmjs.org/package/@algolia/react-instantsearch-widget-color-refinement-list)
@@ -18,6 +20,7 @@ This helps the user **quickly visualize** the kind of **color** that you have **
 - [Demo](#demo)
 - [Installation](#install)
 - [Requirements](#requirements)
+- [Example](#example)
 - [Usage](#usage)
 - [Options](#options)
 <!-- - [Compatibility](#compatibility)
@@ -28,7 +31,7 @@ This helps the user **quickly visualize** the kind of **color** that you have **
 
 ## Demo
 
-[Demo](https://codesandbox.io/s/github/algolia/react-instantsearch-widget-color-refinement-list/tree/main/example?file=/index.ts) on CodeSandbox.
+[Demo](https://codesandbox.io/s/github/algolia/react-instantsearch-widget-color-refinement-list/tree/main/example?file=/index.tsx) on CodeSandbox.
 
 ## Install
 
@@ -40,15 +43,42 @@ yarn add @algolia/react-instantsearch-widget-color-refinement-list
 
 ## Requirements
 
-In your records, color attributes **should have a title and hexadecimal code** separated by a **semicolon `;`** for the widget to work.
+- In your records, color attributes **should have a title and hexadecimal code** separated by a **semicolon `;`** for the widget to work.
+- The **color** attribute should be added to `attributesForFaceting` in your configuration.
 
-Examples:
+Color facet value examples:
 
 - `black;#000`
-- `red;#ff0000`
-- `yellow;#FFFF00`
+- `red;#f00`
+- `yellow;#ffff00`
 
 **Note:** The hexadecimal code length can be **4 or 7 chars** (including the `#` symbol).
+
+Sample record example:
+
+```json
+{
+  "objectID": 0,
+  "color": "black;#000"
+}
+```
+
+## Example
+
+Clone this repository and go to the repo folder:
+
+```bash
+git clone git@github.com:algolia/react-instantsearch-widget-color-refinement-list.git && \
+cd react-instantsearch-widget-color-refinement-list
+```
+
+Install the dependencies and start the example:
+
+```bash
+npm i && npm start
+```
+
+Then open http://localhost:3000/ to see the example in action.
 
 ## Usage
 
