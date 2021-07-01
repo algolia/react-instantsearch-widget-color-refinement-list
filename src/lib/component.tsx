@@ -101,7 +101,9 @@ export const ColorRefinementListComponent = ({
           ></div>
         </div>
         <div className="ais-ColorRefinementList-Label">{item.label}</div>
-        <div className="ais-ColorRefinementList-Count">({item.count})</div>
+        <div className="ais-RefinementList-count ais-ColorRefinementList-Count">
+          {item.count}
+        </div>
       </button>
     );
   };
