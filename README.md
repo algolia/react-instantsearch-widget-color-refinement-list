@@ -28,7 +28,7 @@ This helps the user **quickly visualize** the kind of **color** that you have **
 
 ## Demo
 
-[Demo](https://codesandbox.io/s/github/algolia-samples/react-instantsearch-widget-color-refinement-list/tree/main/example?file=/index.ts) on CodeSandbox.
+[Demo](https://codesandbox.io/s/github/algolia/react-instantsearch-widget-color-refinement-list/tree/main/example?file=/index.ts) on CodeSandbox.
 
 ## Install
 
