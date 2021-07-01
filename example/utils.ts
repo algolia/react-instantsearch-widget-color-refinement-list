@@ -19,7 +19,7 @@ export const useDebugger = () => {
   useEffect(() => {
     const pane = new Pane({
       title: 'ColorRefinementListWidget',
-      expanded: true,
+      expanded: false,
       container: document.getElementById('debug') as HTMLElement,
     });
 
