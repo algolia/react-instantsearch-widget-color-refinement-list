@@ -1,15 +1,15 @@
 <p align="left">
   <a href="https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/">
-    <img alt="InstantSearch.js" src="https://i.ibb.co/44km5r2/react-widget.png">
+    <img alt="React InstantSearch" src="https://i.ibb.co/44km5r2/react-widget.png">
   </a>
 </p>
 
-[React InstantSearch.js widget](https://www.algolia.com/?utm_source=react-instantsearch&utm_campaign=repository) that filters the dataset based on **color facet values**.  
+[React InstantSearch widget](https://www.algolia.com/?utm_source=react-instantsearch&utm_campaign=repository) that filters the dataset based on **color facet values**.  
 Equivalent of the offcial [RefinementList widget](https://www.algolia.com/doc/api-reference/widgets/refinement-list/react/) but displaying a **color indicator** instead of text facet values.
 
 This helps the user **quickly visualize** the kind of **color** that you have **in your index**. This is a great widget to refine records within multiple shades of a single color (like **choosing the color of a jean** for example).
 
-![Example](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/blob/master/docs/example.gif?raw=true)
+![Example](https://i.ibb.co/xXN1Vn6/example.gif)
 
 ---
 
@@ -18,14 +18,14 @@ This helps the user **quickly visualize** the kind of **color** that you have **
 ## Summary
 
 - [Demo](#demo)
-- [Installation](#install)
-- [Requirements](#requirements)
-- [Example](#example)
+- [Installation](#installation)
 - [Usage](#usage)
+- [Requirements](#requirements)
 - [Options](#options)
-<!-- - [Compatibility](#compatibility)
-- [About InstantSearch.js](#learn-more-about-instantsearchjs)
-- [Contributors & Licence](#contributors--licence) -->
+- [Example](#example)
+- [Browser Support](#browser-support)
+- [Troubleshooting](#Troubleshooting)
+- [Contributing & Licence](#contributing--licence)
 
 # Get started
 
@@ -33,52 +33,13 @@ This helps the user **quickly visualize** the kind of **color** that you have **
 
 [Demo](https://codesandbox.io/s/github/algolia/react-instantsearch-widget-color-refinement-list/tree/main/example?file=/index.tsx) on CodeSandbox.
 
-## Install
+## Installation
 
 ```bash
 npm install @algolia/react-instantsearch-widget-color-refinement-list
 # or
 yarn add @algolia/react-instantsearch-widget-color-refinement-list
 ```
-
-## Requirements
-
-- In your records, color attributes **should have a title and hexadecimal code** separated by a **semicolon `;`** for the widget to work.
-- The **color** attribute should be added to `attributesForFaceting` in your configuration.
-
-Color facet value examples:
-
-- `black;#000`
-- `red;#f00`
-- `yellow;#ffff00`
-
-**Note:** The hexadecimal code length can be **4 or 7 chars** (including the `#` symbol).
-
-Sample record example:
-
-```json
-{
-  "objectID": 0,
-  "color": "black;#000"
-}
-```
-
-## Example
-
-Clone this repository and go to the repo folder:
-
-```bash
-git clone git@github.com:algolia/react-instantsearch-widget-color-refinement-list.git && \
-cd react-instantsearch-widget-color-refinement-list
-```
-
-Install the dependencies and start the example:
-
-```bash
-npm i && npm start
-```
-
-Then open http://localhost:3000/ to see the example in action.
 
 ## Usage
 
@@ -117,7 +78,29 @@ ReactDOM.render(
 );
 ```
 
-### Props
+## Requirements
+
+- In your records, color attributes **should have a title and hexadecimal code** separated by a **semicolon `;`** for the widget to work.
+- The **color** attribute should be added to `attributesForFaceting` in your configuration.
+
+Color facet value examples:
+
+- `black;#000`
+- `red;#f00`
+- `yellow;#ffff00`
+
+**Note:** The hexadecimal code length can be **4 or 7 chars** (including the `#` symbol).
+
+Sample record example:
+
+```json
+{
+  "objectID": 0,
+  "color": "black;#000"
+}
+```
+
+### Options
 
 | Option | Type | Required | Default | Description |
 | :-- | :-- | :-- | :-- | --- |
@@ -226,3 +209,74 @@ Modifies the items being displayed, for example, to filter or sort them. It take
   }
 />
 ```
+
+## Example
+
+Clone this repository and go to the repo folder:
+
+```bash
+git clone git@github.com:algolia/react-instantsearch-widget-color-refinement-list.git && \
+cd react-instantsearch-widget-color-refinement-list
+```
+
+Install the dependencies and start the example:
+
+```bash
+npm i && npm start
+```
+
+Then open http://localhost:3000/ to see the example in action.
+
+## Browser support
+
+Same as React InstantSearch it supports the **last two versions of major browsers** (Chrome, Edge, Firefox, Safari).
+
+Please refer to the [browser support](https://www.algolia.com/doc/guides/building-search-ui/installation/react/#browser-support) section in the documentation to use React InstantSearch and this widget on other browsers.
+
+## Troubleshooting
+
+Encountering an issue? Before reaching out to support, we recommend heading to our [FAQ](https://www.algolia.com/doc/guides/building-search-ui/troubleshooting/faq/react/) where you will find answers for the most common issues and gotchas with the library.
+
+## Contributing & Licence
+
+### How to contribute
+
+We welcome all contributors, from casual to regular 💙
+
+- **Bug report**. Is something not working as expected? [Send a bug report](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/issues/new?template=Bug_report.md).
+- **Feature request**. Would you like to add something to the library? [Send a feature request](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/issues/new?template=Feature_request.md).
+- **Documentation**. Did you find a typo in the doc? [Open an issue](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/issues/new) and we'll take care of it.
+- **Development**. If you don't know where to start, you can check the open issues that are [tagged easy](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/issues?q=is%3Aopen+is%3Aissue+label%3A%22Difficulty%3A++++++%E2%9D%84%EF%B8%8F+easy%22), the [bugs](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/issues?q=is%3Aissue+is%3Aopen+label%3A%22%E2%9D%A4+Bug%22) or [chores](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/issues?q=is%3Aissue+is%3Aopen+label%3A%22%E2%9C%A8+Chore%22).
+
+To start contributing to code, you need to:
+
+1.  [Fork the project](https://help.github.com/articles/fork-a-repo/)
+1.  [Clone the repository](https://help.github.com/articles/cloning-a-repository/)
+1.  Install the dependencies: `yarn`
+1.  Run the development mode: `yarn start`
+1.  [Open the project](http://localhost:3000)
+
+Please read [our contribution process](CONTRIBUTING.md) to learn more.
+
+### Licence
+
+Licensed under the [MIT license](LICENSE).
+
+---
+
+**About React InstantSearch**
+
+React InstantSearch is a React library that lets you create an instant-search result experience using [Algolia][algolia-website]’s search API. It is part of the InstantSearch family:
+
+**React InstantSearch** | [InstantSearch.js][instantsearch.js-github] | [Angular InstantSearch][instantsearch-angular-github] | [Vue InstantSearch][instantsearch-vue-github] | [InstantSearch Android][instantsearch-android-github] | [InstantSearch iOS][instantsearch-ios-github]
+
+This project was generated with [create-instantsearch-app](https://github.com/algolia/create-instantsearch-app) by [Algolia](https://algolia.com).
+
+<!-- Links -->
+
+[algolia-website]: https://www.algolia.com/?utm_source=react-instantsearch&utm_campaign=repository
+[instantsearch.js-github]: https://github.com/algolia/instantsearch.js
+[instantsearch-angular-github]: https://github.com/algolia/angular-instantsearch
+[instantsearch-vue-github]: https://github.com/algolia/vue-instantsearch
+[instantsearch-android-github]: https://github.com/algolia/instantsearch-android
+[instantsearch-ios-github]: https://github.com/algolia/instantsearch-ios
