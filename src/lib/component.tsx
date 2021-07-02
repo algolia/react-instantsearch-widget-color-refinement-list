@@ -27,7 +27,9 @@ export const ColorRefinementListComponent = ({
 }: RefinementListProvided & ColorRefinementListExposed) => {
   if (typeof searchable !== 'undefined') {
     // eslint-disable-next-line no-console
-    console.warn(`'searchable' props is not supported yet`);
+    console.warn(
+      `[ColorRefinementList] 'searchable' props is not supported yet.`
+    );
   }
 
   // Local state
