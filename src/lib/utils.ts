@@ -83,10 +83,18 @@ const parseItems = (items: DefaultHit[]): ColorHit[] => {
   for (let i = 0, l = items.length; i < l; i++) {
     const item = items[i] as ColorHit;
     if (typeof item.hex === 'undefined') {
-      const labelSplits = item.label.split(';');
-      item.hex = parseHex(labelSplits[1]);
+      const labelParts = item.label.split(';');
+
+      if (labelParts.length !== 2) {
+        throw new Error(
+          `[ColorRefinementList] 'color' attribute expects the following format: "black;#000". Received "${item.label}".`
+        );
+      }
+
+      const [colorLabel, colorCode] = labelParts;
+      item.hex = parseHex(colorCode);
       item.rgb = hexToRgb(item.hex);
-      item.label = item.label.split(';')[0];
+      item.label = colorLabel;
     }
   }
   return items as ColorHit[];
