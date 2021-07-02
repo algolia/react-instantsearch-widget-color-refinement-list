@@ -1,15 +1,15 @@
 <p align="left">
-  <a href="https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/js/">
-    <img alt="InstantSearch.js" src="https://i.ibb.co/60fJjFy/Widget-banner-tmp.png">
+  <a href="https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/">
+    <img alt="InstantSearch.js" src="https://i.ibb.co/44km5r2/react-widget.png">
   </a>
 </p>
 
-[InstantSearch.js widget](https://www.algolia.com/?utm_source=instantsearch.js&utm_campaign=repository) that filters the dataset based on **color facet values**.  
+[React InstantSearch.js widget](https://www.algolia.com/?utm_source=react-instantsearch&utm_campaign=repository) that filters the dataset based on **color facet values**.  
 Equivalent of the offcial [RefinementList widget](https://www.algolia.com/doc/api-reference/widgets/refinement-list/react/) but displaying a **color indicator** instead of text facet values.
 
 This helps the user **quickly visualize** the kind of **color** that you have **in your index**. This is a great widget to refine records within multiple shades of a single color (like **choosing the color of a jean** for example).
 
-![Example](docs/example.gif)
+![Example](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/blob/master/docs/example.gif?raw=true)
 
 ---
 
