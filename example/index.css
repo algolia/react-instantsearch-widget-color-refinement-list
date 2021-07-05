@@ -57,11 +57,12 @@ body {
 .ais-ColorRefinementList-Items {
   display: flex;
   flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .ais-ColorRefinementList-Item {
-  flex-basis: 33.33%;
-  max-width: 33.33%;
+  flex-basis: 3rem;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
