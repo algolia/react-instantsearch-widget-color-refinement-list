@@ -20,6 +20,7 @@ This helps the user **quickly visualize** the kind of **color** that you have **
 - [Demo](#demo)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Styling](#styling)
 - [Requirements](#requirements)
 - [Options](#options)
 - [Example](#example)
@@ -54,6 +55,9 @@ import {
   Shape,
 } from '@algolia/react-instantsearch-widget-color-refinement-list';
 
+// Import default styles
+import '@algolia/react-instantsearch-widget-color-refinement-list/dist/style.css';
+
 const searchClient = algoliasearch('appId', 'apiKey');
 
 ReactDOM.render(
@@ -76,6 +80,21 @@ ReactDOM.render(
   </InstantSearch>,
   document.getElementById('root')
 );
+```
+
+## Styling
+
+The widget ships with default styles that you can import either from the NPM package or directly from a CDN like JSDelivr.
+
+```js
+import '@algolia/react-instantsearch-widget-color-refinement-list/dist/style.css';
+```
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@algolia/react-instantsearch-widget-color-refinement-list/dist/style.css"
+/>
 ```
 
 ## Requirements
