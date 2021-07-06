@@ -12,6 +12,13 @@
     "algolia"
   ],
   "license": "MIT",
+  "author": "Algolia <support@algolia.com>",
+  "repository": "algolia/react-instantsearch-widget-color-refinement-list",
+  "homepage": "https://github.com/algolia/react-instantsearch-widget-color-refinement-list#readme",
+  "bugs": {
+    "url": "https://github.com/algolia/react-instantsearch-widget-color-refinement-list/issues",
+    "email": "support@algolia.com"
+  },
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.es.js",
   "exports": {
