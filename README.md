@@ -222,7 +222,9 @@ cd react-instantsearch-widget-color-refinement-list
 Install the dependencies and start the example:
 
 ```bash
-npm i && npm start
+npm install && npm start
+# or
+yarn install && yarn start
 ```
 
 Then open http://localhost:3000/ to see the example in action.
