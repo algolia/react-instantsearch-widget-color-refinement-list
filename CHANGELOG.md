@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/compare/v1.1.1...v1.1.2) (2021-07-07)
+
+
+### Bug Fixes
+
+* styles were imported in typings ([59b5ce0](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/commit/59b5ce067141fb518ed34d0bc13d7ca48bf1031f))
+
 ### [1.1.1](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/compare/v1.1.0...v1.1.1) (2021-07-07)
 
 
