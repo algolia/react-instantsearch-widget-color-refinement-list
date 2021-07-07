@@ -13,6 +13,9 @@ import { ColorRefinementList } from '../src';
 
 import { useDebugger, capitalize } from './utils';
 
+import '../src/style.scss';
+import './index.scss';
+
 import type { Hit } from 'react-instantsearch-core';
 
 const searchClient = algoliasearch(
