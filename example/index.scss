@@ -7,7 +7,7 @@ body {
 #debug {
   position: fixed;
   bottom: 10px;
-  left: 10px;
+  right: 10px;
 }
 
 /* ========================= Layout */
@@ -17,7 +17,8 @@ body {
 }
 
 .panel__filters {
-  flex-basis: 12rem;
+  width: 12rem;
+  flex-shrink: 0;
 }
 
 .panel__results {
@@ -31,4 +32,16 @@ body {
 
 .ais-RefinementList-showMore {
   margin-top: 0.5rem;
+}
+
+.ais-Hits-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.ais-Hits-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
