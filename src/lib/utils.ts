@@ -8,8 +8,11 @@ import type {
 
 const colorDistance = (color1: ColorHit, color2: ColorHit) => {
   let result = 0;
-  for (let i = 0; i < color1.rgb.length; i++) {
-    result += (color1.rgb[i] - color2.rgb[i]) * (color1.rgb[i] - color2.rgb[i]);
+  if (color1.rgb && color2.rgb) {
+    for (let i = 0; i < color1.rgb.length; i++) {
+      result +=
+        (color1.rgb[i] - color2.rgb[i]) * (color1.rgb[i] - color2.rgb[i]);
+    }
   }
   return result;
 };
@@ -34,8 +37,8 @@ const sortByColors = (hits: ColorHit[]) => {
     acc[hit.label] = [hit];
     return acc;
   }, {});
-  /* eslint-enable no-param-reassign */
 
+  /* eslint-enable no-param-reassign */
   return distances.reduce((acc: ColorHit[], distance: Distance) => {
     const color1 = distance[0];
     const color2 = distance[1];
@@ -79,24 +82,47 @@ const parseHex = (hex: string) => {
   return `#${parsedHex}`;
 };
 
-const parseItems = (items: DefaultHit[]): ColorHit[] => {
+const isHexCode = (value: string) => {
+  return /^#([0-9A-F]{3}){1,2}$/i.test(value);
+};
+
+const parseItems = (items: DefaultHit[], separator: string): ColorHit[] => {
   for (let i = 0, l = items.length; i < l; i++) {
     const item = items[i] as ColorHit;
-    if (typeof item.hex === 'undefined') {
-      const labelParts = item.label.split(';');
+
+    if (typeof item.hex === 'undefined' || typeof item.url === 'undefined') {
+      const itemLabel = item.label;
+
+      const separatorIndex = itemLabel.indexOf(separator);
+      // If separator is not present, skip
+      if (separatorIndex === -1) continue; // eslint-disable-line no-continue
+
+      // Split on the first separator only
+      const labelParts = [
+        itemLabel.slice(0, separatorIndex),
+        itemLabel.slice(separatorIndex + separator.length),
+      ];
 
       if (labelParts.length !== 2) {
         throw new Error(
-          `[ColorRefinementList] 'color' attribute expects the following format: "black;#000". Received "${item.label}".`
+          `[ColorRefinementList] 'color' attribute expects the following format: "black${separator}#000". Received "${itemLabel}".`
         );
       }
 
       const [colorLabel, colorCode] = labelParts;
-      item.hex = parseHex(colorCode);
-      item.rgb = hexToRgb(item.hex);
+      if (!colorCode) continue; // eslint-disable-line no-continue
+
+      // Detect if it's an URL or an hex code
+      if (isHexCode(colorCode)) {
+        item.hex = parseHex(colorCode);
+        item.rgb = hexToRgb(item.hex);
+      } else {
+        item.url = colorCode;
+      }
       item.label = colorLabel;
     }
   }
+
   return items as ColorHit[];
 };
 

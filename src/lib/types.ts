@@ -5,8 +5,9 @@ export type DefaultHit = RefinementListProvided['items'][0];
 export type RgbValue = [number, number, number];
 
 export type ColorHit = DefaultHit & {
-  rgb: RgbValue;
-  hex: string;
+  rgb?: RgbValue;
+  hex?: string;
+  url?: string;
 };
 
 export type Distance = [ColorHit, ColorHit, number];

@@ -1,5 +1,9 @@
 /* ========================= ColorRefinementList Widget */
 /* ---------- List layout */
+.ais-ColorRefinementList-Layout--List .ais-ColorRefinementList-Items {
+  grid-template-columns: 1fr;
+}
+
 .ais-ColorRefinementList-Layout--List .ais-ColorRefinementList-Item {
   flex-basis: 100%;
   flex-direction: row;
@@ -16,22 +20,20 @@
 
 .ais-ColorRefinementList-Layout--List .ais-ColorRefinementList-Count {
   display: block;
+  margin-left: auto;
 }
 
 /* ---------- Items */
 .ais-ColorRefinementList-Items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
+  gap: 1rem;
 }
 
 .ais-ColorRefinementList-Item {
-  flex-basis: 3rem;
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1rem;
   font-size: 0.8rem;
   color: black;
 
@@ -46,11 +48,12 @@
 .ais-ColorRefinementList-Color {
   width: 1.75rem;
   height: 1.75rem;
-  border-radius: 50%;
+  border-radius: 9999px;
   transition: 0.3s transform ease-out;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-size: contain;
 }
 
 /* Hover state */

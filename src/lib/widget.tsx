@@ -12,6 +12,7 @@ export interface ColorRefinementListExposed extends RefinementListExposed {
   showMore?: boolean;
   limit?: number;
   shape?: ShapeType;
+  separator?: string;
   transformItems?: (items: ColorHit[]) => ColorHit[];
 }
 
