@@ -19,26 +19,16 @@ import './index.scss';
 import type { Hit } from 'react-instantsearch-core';
 
 const searchClient = algoliasearch(
-  'latency',
-  'af044fb0788d6bb15f807e4420592bc5'
+  '8L3BNIKU8L',
+  '8ae67fc912ae72265d56b1e9246ca67a'
 );
 
 const HitComponent = ({ hit }: { hit: Hit }) => {
-  const splits = hit.color.split(';');
-  const name = splits[0];
-  const hex = splits[1];
   return (
-    <div>
-      <div
-        style={{
-          backgroundColor: hex,
-          width: 28,
-          height: 28,
-          border: name === 'white' ? '1px solid grey' : '',
-        }}
-      />
-      <div>{name}</div>
-    </div>
+    <>
+      <img src={hit.image_link} alt={hit.name} style={{ width: '100px' }} />
+      <div>{hit.name}</div>
+    </>
   );
 };
 
@@ -46,20 +36,18 @@ const App = () => {
   const { props } = useDebugger();
 
   return (
-    <InstantSearch
-      indexName="instantsearch-widget-color-refinement-list"
-      searchClient={searchClient}
-    >
+    <InstantSearch indexName="gstar_demo" searchClient={searchClient}>
       <main className="container">
         <Panel header="Colors" className="panel__filters">
           <ColorRefinementList
-            attribute="color"
+            attribute="hexColorCode"
             sortByColor={props.sortByColor}
             layout={props.layout}
             shape={props.shape}
             limit={props.limit}
             showMore={props.showMore}
             showMoreLimit={props.showMoreLimit}
+            separator={props.separator}
             transformItems={(items) =>
               items.map((item) => ({
                 ...item,

@@ -11,6 +11,7 @@ const defaultProps = {
   shape: Shape.Circle,
   showMore: false,
   showMoreLimit: 20,
+  separator: '//',
 };
 
 export const useDebugger = () => {
@@ -19,7 +20,7 @@ export const useDebugger = () => {
   useEffect(() => {
     const pane = new Pane({
       title: 'ColorRefinementListWidget',
-      expanded: false,
+      expanded: true,
       container: document.getElementById('debug') as HTMLElement,
     });
 
@@ -32,6 +33,7 @@ export const useDebugger = () => {
       max: 11,
       step: 1,
     });
+    commonFolder.addInput(defaultProps, 'separator');
 
     const uiFolder = propsFolder.addFolder({ title: 'UI' });
     uiFolder.addInput(defaultProps, 'layout', {
