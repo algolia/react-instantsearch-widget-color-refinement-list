@@ -70,6 +70,7 @@ ReactDOM.render(
       limit={10}
       showMore={false}
       showMoreLimit={20}
+      separator=";"
       transformItems={(items) =>
         items.map((item) => ({
           ...item,
@@ -99,7 +100,8 @@ import '@algolia/react-instantsearch-widget-color-refinement-list/dist/style.css
 
 ## Requirements
 
-- In your records, color attributes **should have a title and hexadecimal code** separated by a **semicolon `;`** for the widget to work.
+- In your records, color attributes **should have a title and hexadecimal code** separated by a **semicolon `;`** (by default, but it can be customized using the [`separator`](#separator) option) for the widget to work.
+- You can also use an URL instead of the hexadecimal code if you want to display a pattern for example.
 - The **color** attribute should be added to `attributesForFaceting` in your configuration.
 
 Color facet value examples:
@@ -107,8 +109,9 @@ Color facet value examples:
 - `black;#000`
 - `red;#f00`
 - `yellow;#ffff00`
+- `pattern;https://example.com/images/pattern.png`
 
-**Note:** The hexadecimal code length can be **4 or 7 chars** (including the `#` symbol).
+**Note:** The hexadecimal code length can be **3 or 6 chars** (excluding the `#` symbol).
 
 Sample record example:
 
@@ -124,13 +127,14 @@ Sample record example:
 | Option | Type | Required | Default | Description |
 | :-- | :-- | :-- | :-- | --- |
 | [`attribute`](#attribute) | `string` | true | - | Name of the attribute that contains the color in the record. |
-| [`sortByColor`](#sortByColor) | `boolean` | false | true | Sort facet values by color distance. |
-| [`layout`](#layout) | `enum:Grid\|List` | false | 'Grid' | UI layout of the facet values. |
-| [`shape`](#shape) | `enum:Circle\|Square` | false | 'Circle' | UI color shape. |
-| [`limit`](#limit) | `number` | false | 10 | How many facet values to retrieve. |
-| [`showMore`](#showMore) | `boolean` | false | false | Whether to display a button that expands the number of items. |
-| [`showMoreLimit`](#showMoreLimit) | `number` | false | 20 | Maximum number of displayed items. Only used when `showMore` is set to `true`. |
-| [`transformItems`](#transformItems) | `function` | false | undefined | Modifies the items being displayed, for example, to filter or sort them. It takes items as argument and expects them back in return. |
+| [`sortByColor`](#sortByColor) | `boolean` | false | `true` | Sort facet values by color distance. |
+| [`layout`](#layout) | `enum:Grid\|List` | false | `Grid` | UI layout of the facet values. |
+| [`shape`](#shape) | `enum:Circle\|Square` | false | `Circle` | UI color shape. |
+| [`limit`](#limit) | `number` | false | `10` | How many facet values to retrieve. |
+| [`showMore`](#showMore) | `boolean` | false | `false` | Whether to display a button that expands the number of items. |
+| [`showMoreLimit`](#showMoreLimit) | `number` | false | `20` | Maximum number of displayed items. Only used when `showMore` is set to `true`. |
+| [`separator`](#separator) | `string` | false | `;` | Color facet value separator. |
+| [`transformItems`](#transformItems) | `function` | false | `undefined` | Modifies the items being displayed, for example, to filter or sort them. It takes items as argument and expects them back in return. |
 
 #### attribute
 
@@ -210,6 +214,16 @@ Maximum number of displayed items. Only used when `showMore` is set to `true`.
 
 ```tsx
 <ColorRefinementList showMoreLimit={20} />
+```
+
+#### separator
+
+> `string`
+
+Color facet value separator.
+
+```tsx
+<ColorRefinementList separator="//" />
 ```
 
 #### transformItems
