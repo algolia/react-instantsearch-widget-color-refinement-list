@@ -95,7 +95,11 @@ const parseItems = (items: DefaultHit[], separator: string): ColorHit[] => {
 
       const separatorIndex = itemLabel.indexOf(separator);
       // If separator is not present, skip
-      if (separatorIndex === -1) continue; // eslint-disable-line no-continue
+      if (separatorIndex === -1) {
+        throw new Error(
+          `[ColorRefinementList] Unable to found 'separator' ('${separator}') in color value, expected format: 'black${separator}#000000', received: '${itemLabel}'.`
+        );
+      }
 
       // Split on the first separator only
       const labelParts = [
@@ -105,7 +109,7 @@ const parseItems = (items: DefaultHit[], separator: string): ColorHit[] => {
 
       if (labelParts.length !== 2) {
         throw new Error(
-          `[ColorRefinementList] 'color' attribute expects the following format: "black${separator}#000". Received "${itemLabel}".`
+          `[ColorRefinementList] Unable to parse color value, expected format: 'black${separator}#000000', received: '${itemLabel}'.`
         );
       }
 
