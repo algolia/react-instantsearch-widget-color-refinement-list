@@ -31,7 +31,6 @@
   "jsdelivr": "./dist/index.umd.js",
   "unpkg": "./dist/index.umd.js",
   "types": "./dist/index.d.ts",
-  "type": "module",
   "files": [
     "dist"
   ],
