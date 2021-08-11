@@ -8,6 +8,7 @@ export type ColorHit = DefaultHit & {
   rgb?: RgbValue;
   hex?: string;
   url?: string;
+  parsed: boolean;
 };
 
 export type Distance = [ColorHit, ColorHit, number];

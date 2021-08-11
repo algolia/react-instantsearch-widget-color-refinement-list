@@ -90,10 +90,12 @@ const parseItems = (items: DefaultHit[], separator: string): ColorHit[] => {
   for (let i = 0, l = items.length; i < l; i++) {
     const item = items[i] as ColorHit;
 
-    if (typeof item.hex === 'undefined' || typeof item.url === 'undefined') {
-      const itemLabel = item.label;
+    if (!item.parsed) {
+      item.parsed = true;
 
+      const itemLabel = item.label;
       const separatorIndex = itemLabel.indexOf(separator);
+
       // If separator is not present, skip
       if (separatorIndex === -1) {
         throw new Error(
