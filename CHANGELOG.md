@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/compare/v1.1.2...v1.2.0) (2021-08-11)
+
+
+### Features
+
+* add separator option and url as color value ([dbec558](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/commit/dbec558731ea9b14fb7c7a0445b3e15cbbfca554))
+* update example ([7e5fbd4](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/commit/7e5fbd4fb90ad947e7ebdf291348537c60b48e50))
+
+
+### Bug Fixes
+
+* can't import package using ESM ([25105b5](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/commit/25105b597585d30263bd2b08506415f3b86ab0ef))
+* **example:** remove stylesheet ([4c47926](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/commit/4c479264b118e120dd5410ad1e83f36c3686da0f))
+* **example:** update css layout ([0f9e4f3](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/commit/0f9e4f3c51f82c449698428cc4dd19bf15065d9e))
+
 ### [1.1.2](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/compare/v1.1.1...v1.1.2) (2021-07-07)
 
 
