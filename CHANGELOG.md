@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/compare/v1.3.0...v1.3.1) (2021-08-12)
+
+
+### Bug Fixes
+
+* disable css source maps ([a6846a5](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/commit/a6846a5b5ddc8ece927a9f48a48df9dc4faa82b3))
+
 ## [1.3.0](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/compare/v1.2.4...v1.3.0) (2021-08-12)
 
 
