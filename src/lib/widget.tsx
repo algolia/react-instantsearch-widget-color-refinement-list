@@ -1,10 +1,9 @@
+import type { ComponentType } from 'react';
+import type { RefinementListExposed } from 'react-instantsearch-core';
 import { connectRefinementList } from 'react-instantsearch-dom';
 
 import { ColorRefinementListComponent } from './component';
-
 import type { ColorHit, LayoutType, ShapeType } from './types';
-import type { ElementType } from 'react';
-import type { RefinementListExposed } from 'react-instantsearch-core';
 
 export interface ColorRefinementListExposed extends RefinementListExposed {
   sortByColor?: boolean;
@@ -16,5 +15,5 @@ export interface ColorRefinementListExposed extends RefinementListExposed {
   transformItems?: (items: ColorHit[]) => ColorHit[];
 }
 
-export const ColorRefinementList: ElementType<ColorRefinementListExposed> =
+export const ColorRefinementList: ComponentType<ColorRefinementListExposed> =
   connectRefinementList(ColorRefinementListComponent);
