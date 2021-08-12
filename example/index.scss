@@ -13,7 +13,7 @@ body {
 /* ========================= Layout */
 .container {
   display: flex;
-  column-gap: 0.8rem;
+  column-gap: 1rem;
 }
 
 .panel__filters {
@@ -27,7 +27,7 @@ body {
 
 /* ========================= IS Widgets */
 .ais-SearchBox {
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
 }
 
 .ais-RefinementList-showMore {
@@ -44,4 +44,40 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 8px;
+
+  img {
+    width: 50%;
+  }
+}
+
+/* ========================= Responsive */
+@media (max-width: 767px) {
+  /* ========================= Layout */
+  .container {
+    flex-direction: column;
+  }
+
+  .panel__filters {
+    width: 100%;
+  }
+
+  /* ========================= IS Widgets */
+  .ais-Hits-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ais-Hits-item {
+    img {
+      width: 100%;
+    }
+  }
+
+  .ais-Panel {
+    margin-bottom: 1rem;
+  }
+  
+  .ais-Pagination-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

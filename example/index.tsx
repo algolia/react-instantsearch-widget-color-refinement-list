@@ -25,7 +25,7 @@ const searchClient = algoliasearch(
 const HitComponent = ({ hit }: { hit: Hit }) => {
   return (
     <>
-      <img src={hit.image_link} alt={hit.name} style={{ width: '100px' }} />
+      <img src={hit.image_link} alt={hit.name} />
       <div>{hit.name}</div>
     </>
   );
@@ -47,6 +47,13 @@ const App = () => {
             showMore={props.showMore}
             showMoreLimit={props.showMoreLimit}
             separator={props.separator}
+            translations={{
+              refineOn: (value: string) => `Refine on ${value}`,
+              colors: (refinedCount: number) =>
+                `Colors${refinedCount ? `, ${refinedCount} selected` : ''}`,
+              showMore: (expanded: boolean) =>
+                expanded ? 'Show less' : 'Show more',
+            }}
             transformItems={(items) =>
               items.map((item) => ({
                 ...item,
