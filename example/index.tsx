@@ -43,6 +43,7 @@ const App = () => {
             sortByColor={props.sortByColor}
             layout={props.layout}
             shape={props.shape}
+            pinRefined={props.pinRefined}
             limit={props.limit}
             showMore={props.showMore}
             showMoreLimit={props.showMoreLimit}

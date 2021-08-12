@@ -9,6 +9,7 @@ const defaultProps = {
   limit: 6,
   layout: Layout.Grid,
   shape: Shape.Circle,
+  pinRefined: false,
   showMore: false,
   showMoreLimit: 20,
   separator: '//',
@@ -30,7 +31,7 @@ export const useDebugger = () => {
     commonFolder.addInput(defaultProps, 'sortByColor');
     commonFolder.addInput(defaultProps, 'limit', {
       min: 1,
-      max: 11,
+      max: 12,
       step: 1,
     });
     commonFolder.addInput(defaultProps, 'separator');
@@ -48,6 +49,7 @@ export const useDebugger = () => {
         Square: 'Square',
       },
     });
+    uiFolder.addInput(defaultProps, 'pinRefined');
 
     const showMoreFolder = propsFolder.addFolder({ title: 'Show More' });
     showMoreFolder.addInput(defaultProps, 'showMore');

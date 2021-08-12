@@ -9,9 +9,8 @@ import type { ColorHit, LayoutType, ShapeType } from './types';
 export interface ColorRefinementListExposed extends RefinementListExposed {
   sortByColor?: boolean;
   layout?: LayoutType;
-  showMore?: boolean;
-  limit?: number;
   shape?: ShapeType;
+  pinRefined?: boolean;
   separator?: string;
   className?: string;
   transformItems?: (items: ColorHit[]) => ColorHit[];

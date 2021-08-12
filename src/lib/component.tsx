@@ -39,6 +39,7 @@ export const ColorRefinementList = ({
   sortByColor = true,
   layout = Layout.Grid,
   shape = Shape.Circle,
+  pinRefined = false,
   limit = 10,
   showMore = false,
   showMoreLimit = 20,
@@ -83,17 +84,14 @@ export const ColorRefinementList = ({
   const notRefinedItems = resultItems.filter((hit) => !hit.isRefined);
   const refinedItemsLength = refinedItems.length;
 
-  // If not expanded
   if (!expanded) {
-    // Get refined items
-    resultItems = refinedItems;
-
-    // If we don't have enough refined items to reach the limit
-    if (limit > refinedItemsLength) {
-      // Concat refined items with not refined ones until we reach the limit
-      resultItems = resultItems.concat(
-        notRefinedItems.slice(0, limit - refinedItemsLength)
+    if (pinRefined) {
+      // If not expanded, concat refined items with not refined ones to reach the limit
+      // Refined items are pinned at the top and never gets sliced
+      resultItems = refinedItems.concat(
+        notRefinedItems.slice(0, Math.max(0, limit - refinedItemsLength))
       );
+    } else {
       // Slice result items to the limit
       resultItems = resultItems.slice(0, limit);
     }

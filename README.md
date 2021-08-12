@@ -151,6 +151,7 @@ Sample record example:
 | [`sortByColor`](#sortByColor) | `boolean` | false | `true` | Sort facet values by color distance. |
 | [`layout`](#layout) | `enum:Grid\|List` | false | `Grid` | UI layout of the facet values. |
 | [`shape`](#shape) | `enum:Circle\|Square` | false | `Circle` | UI color shape. |
+| [`pinRefined`](#pinRefined) | `boolean` | false | `false` | When displaying the [`showMore`](#showMore) button and the list is not expanded, should the refined items be pinned to the top or remain in the same order. |
 | [`limit`](#limit) | `number` | false | `10` | How many facet values to retrieve. |
 | [`showMore`](#showMore) | `boolean` | false | `false` | Whether to display a button that expands the number of items. |
 | [`showMoreLimit`](#showMoreLimit) | `number` | false | `20` | Maximum number of displayed items. Only used when `showMore` is set to `true`. |
@@ -207,6 +208,16 @@ import {
 } from '@algolia/react-instantsearch-widget-color-refinement-list';
 
 <ColorRefinementList shape={Shape.Circle} />;
+```
+
+#### pinRefined
+
+> `boolean`
+
+When displaying the [`showMore`](#showMore) button and the list is not expanded, should the refined items be pinned to the top or remain in the same order.
+
+```tsx
+<ColorRefinementList limit={5} showMore={true} pinRefined={true} />;
 ```
 
 #### limit
