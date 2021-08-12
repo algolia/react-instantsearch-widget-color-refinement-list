@@ -1,6 +1,7 @@
 import algoliasearch from 'algoliasearch/lite';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import type { Hit } from 'react-instantsearch-core';
 import {
   InstantSearch,
   SearchBox,
@@ -15,8 +16,6 @@ import { useDebugger, capitalize } from './utils';
 
 import '../src/style.scss';
 import './index.scss';
-
-import type { Hit } from 'react-instantsearch-core';
 
 const searchClient = algoliasearch(
   '8L3BNIKU8L',

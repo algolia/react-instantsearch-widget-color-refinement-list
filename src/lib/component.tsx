@@ -1,17 +1,16 @@
 import React, { useMemo, useState } from 'react';
+import type { CSSProperties } from 'react';
+import type { RefinementListProvided } from 'react-instantsearch-core';
 
 import { Layout, Shape } from './types';
+import type { ColorHit } from './types';
 import {
   getContrastColor,
   parseItems,
   sortByColors,
   sortByLabel,
 } from './utils';
-
-import type { ColorHit } from './types';
 import type { ColorRefinementListExposed } from './widget';
-import type { CSSProperties } from 'react';
-import type { RefinementListProvided } from 'react-instantsearch-core';
 
 export const ColorRefinementListComponent = ({
   items,
