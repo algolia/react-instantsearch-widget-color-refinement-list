@@ -9,7 +9,7 @@ Equivalent of the offcial [RefinementList widget](https://www.algolia.com/doc/ap
 
 This helps the user **quickly visualize** the kind of **color** that you have **in your index**. This is a great widget to refine records within multiple shades of a single color (like **choosing the color of a jean** for example).
 
-![Example](https://i.ibb.co/xXN1Vn6/example.gif)
+![Example](https://i.ibb.co/7kDgK8V/example.gif)
 
 ---
 
@@ -21,6 +21,7 @@ This helps the user **quickly visualize** the kind of **color** that you have **
 - [Installation](#installation)
 - [Usage](#usage)
 - [Styling](#styling)
+  - [CSS variables](#css-variables)
 - [Requirements](#requirements)
 - [Options](#options)
 - [Example](#example)
@@ -71,6 +72,13 @@ ReactDOM.render(
       showMore={false}
       showMoreLimit={20}
       separator=";"
+      translations={{
+        refineOn: (value: string) => `Refine on ${value}`,
+        colors: (refinedCount: number) =>
+          `Colors${refinedCount ? `, ${refinedCount} selected` : ''}`,
+        showMore: (expanded: boolean) =>
+          expanded ? 'Show less' : 'Show more',
+      }}
       transformItems={(items) =>
         items.map((item) => ({
           ...item,
@@ -97,6 +105,19 @@ import '@algolia/react-instantsearch-widget-color-refinement-list/dist/style.css
   href="https://cdn.jsdelivr.net/npm/@algolia/react-instantsearch-widget-color-refinement-list/dist/style.css"
 />
 ```
+
+### CSS variables
+
+The widget styles uses CSS variables that you can customize in your own CSS.  
+You can override CSS variables using the `.ais-ColorRefinementList` class.
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `--transition-duration` | [`time`][css-time] | Transition duration (used for hover, active, refined states). |
+| `--items-column-width` | [`length`][css-length] | Items grid column width. |
+| `--items-gap` | [`length`][css-length] | Items grid gap. |
+| `--refined-icon-size` | [`length`][css-length] | Refined SVG icon size. |
+| `--color-size` | [`length`][css-length] | Color swatch size. |
 
 ## Requirements
 
@@ -125,7 +146,7 @@ Sample record example:
 ### Options
 
 | Option | Type | Required | Default | Description |
-| :-- | :-- | :-- | :-- | --- |
+| --- | --- | --- | --- | --- |
 | [`attribute`](#attribute) | `string` | true | - | Name of the attribute that contains the color in the record. |
 | [`sortByColor`](#sortByColor) | `boolean` | false | `true` | Sort facet values by color distance. |
 | [`layout`](#layout) | `enum:Grid\|List` | false | `Grid` | UI layout of the facet values. |
@@ -134,6 +155,8 @@ Sample record example:
 | [`showMore`](#showMore) | `boolean` | false | `false` | Whether to display a button that expands the number of items. |
 | [`showMoreLimit`](#showMoreLimit) | `number` | false | `20` | Maximum number of displayed items. Only used when `showMore` is set to `true`. |
 | [`separator`](#separator) | `string` | false | `;` | Color facet value separator. |
+| [`className`](#className) | `string` | false | - | Custom CSS classes. |
+| [`translations`](#translations) | `object` | false | - | A mapping of keys to translation values. |
 | [`transformItems`](#transformItems) | `function` | false | `undefined` | Modifies the items being displayed, for example, to filter or sort them. It takes items as argument and expects them back in return. |
 
 #### attribute
@@ -226,6 +249,38 @@ Color facet value separator.
 <ColorRefinementList separator="//" />
 ```
 
+#### className
+
+> `string`
+
+Custom CSS classes.
+
+```tsx
+<ColorRefinementList className="my-class" />
+```
+
+#### translations
+
+> `object`
+
+A mapping of keys to translation values.
+
+- `refineOn`: aria-label value for an item. Accepts one `string` parameter that is the current item value.
+- `colors`: aria-label value for items. Accepts one `number` parameter that is the number of items refined.
+- `showMore`: the label of the “Show more” button. Accepts one `boolean` parameter that is `true` if the values are expanded, `false` otherwise.
+
+```tsx
+<LoadMoreWithProgressBar
+  translations={{
+    refineOn: (value: string) => `Refine on ${value}`,
+    colors: (refinedCount: number) =>
+      `Colors${refinedCount ? `, ${refinedCount} selected` : ''}`,
+    showMore: (expanded: boolean) =>
+      expanded ? 'Show less' : 'Show more',
+  }}
+/>
+```
+
 #### transformItems
 
 > `function`
@@ -315,3 +370,5 @@ This project was generated with [create-instantsearch-app](https://github.com/al
 [instantsearch-vue-github]: https://github.com/algolia/vue-instantsearch
 [instantsearch-android-github]: https://github.com/algolia/instantsearch-android
 [instantsearch-ios-github]: https://github.com/algolia/instantsearch-ios
+[css-time]: https://developer.mozilla.org/en-US/docs/Web/CSS/time
+[css-length]: https://developer.mozilla.org/en-US/docs/Web/CSS/length
