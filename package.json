@@ -40,7 +40,7 @@
     "prebuild": "rm -rf dist",
     "build": "vite build && npm run build:types && npm run build:styles",
     "build:types": "tsc -p tsconfig.declaration.json",
-    "build:styles": "sass --style=compressed src/style.scss:dist/style.css",
+    "build:styles": "sass --style=compressed --no-source-map -- src/style.scss:dist/style.css",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "npm run lint --fix",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
