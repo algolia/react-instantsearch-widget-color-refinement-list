@@ -1,12 +1,7 @@
 import path from 'path';
 
 import reactRefresh from '@vitejs/plugin-react-refresh';
-import vite from 'vite';
-
-// import { defineConfig } from 'vite' -> fails when type:module in package.json
-// it seems related to https://github.com/vitejs/vite/issues/1560
-// so far this is the workaround.
-const { defineConfig } = vite;
+import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -26,6 +21,7 @@ export default defineConfig({
         'react-dom',
         'react-instantsearch-dom',
         'react-instantsearch-core',
+        'classnames',
       ],
       output: {
         globals: {
@@ -33,6 +29,7 @@ export default defineConfig({
           'react-dom': 'ReactDOM',
           'react-instantsearch-dom': 'ReactInstantSearchDOM',
           'react-instantsearch-core': 'ReactInstantSearchCore',
+          classnames: 'classNames',
         },
       },
     },
