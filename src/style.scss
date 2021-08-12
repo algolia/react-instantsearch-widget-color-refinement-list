@@ -1,36 +1,49 @@
 /* ========================= ColorRefinementList Widget */
+/* ---------- CSS variables */
+.ais-ColorRefinementList {
+  // Transition
+  --transition-duration: 0.2s;
+  // Grid
+  --items-column-width: 3rem;
+  --items-gap: 1rem;
+  // Refined icon
+  --refined-icon-size: 1.1rem;
+  // Color
+  --color-size: 1.75rem;
+}
+
 /* ---------- List layout */
-.ais-ColorRefinementList-Layout--List .ais-ColorRefinementList-Items {
+.ais-ColorRefinementList-layoutList .ais-ColorRefinementList-items {
   grid-template-columns: 1fr;
 }
 
-.ais-ColorRefinementList-Layout--List .ais-ColorRefinementList-Item {
+.ais-ColorRefinementList-layoutList .ais-ColorRefinementList-item {
   flex-basis: 100%;
   flex-direction: row;
   max-width: 100%;
 }
 
-.ais-ColorRefinementList-Layout--List .ais-ColorRefinementList-Color {
+.ais-ColorRefinementList-layoutList .ais-ColorRefinementList-color {
   margin-right: 0.8rem;
 }
 
-.ais-ColorRefinementList-Layout--List .ais-ColorRefinementList-Label {
+.ais-ColorRefinementList-layoutList .ais-ColorRefinementList-label {
   margin-top: 0;
 }
 
-.ais-ColorRefinementList-Layout--List .ais-ColorRefinementList-Count {
+.ais-ColorRefinementList-layoutList .ais-ColorRefinementList-count {
   display: block;
   margin-left: auto;
 }
 
 /* ---------- Items */
-.ais-ColorRefinementList-Items {
+.ais-ColorRefinementList-items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(var(--items-column-width), 1fr));
+  gap: var(--items-gap);
 }
 
-.ais-ColorRefinementList-Item {
+.ais-ColorRefinementList-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,115 +58,70 @@
 }
 
 /* ---------- Color */
-.ais-ColorRefinementList-Color {
-  width: 1.75rem;
-  height: 1.75rem;
+.ais-ColorRefinementList-color {
+  width: var(--color-size);
+  height: var(--color-size);
   border-radius: 9999px;
-  transition: 0.3s transform ease-out;
+  transition: var(--transition-duration) transform ease-out;
   display: flex;
   align-items: center;
   justify-content: center;
   background-size: contain;
 }
 
-/* Hover state */
-.ais-ColorRefinementList-Item:hover .ais-ColorRefinementList-Color {
-  transform: scale(1.1);
+/* Hover/active states */
+.ais-ColorRefinementList-item {
+  &:hover .ais-ColorRefinementList-color {
+    transform: scale(1.1);
+  }
+
+  &:active .ais-ColorRefinementList-color {
+    transform: scale(0.9);
+  }
 }
 
 /* Specific case: Add border to color circle to distinguish it from the background */
-.ais-ColorRefinementList-Color.color--ffffff {
+.ais-ColorRefinementList-color.color--ffffff {
   border: 1px solid #d1d1d1;
 }
 
 /* Shape modifiers */
-.ais-ColorRefinementList-Shape--Square .ais-ColorRefinementList-Color {
+.ais-ColorRefinementList-shapeSquare .ais-ColorRefinementList-color {
   border-radius: 0;
 }
 
 /* ---------- Label */
-.ais-ColorRefinementList-Label {
+.ais-ColorRefinementList-label {
   margin-top: 0.3rem;
   transition: 0.3s color ease-out;
 }
 
-.ais-ColorRefinementList-Item:hover .ais-ColorRefinementList-Label {
+.ais-ColorRefinementList-item:hover .ais-ColorRefinementList-label {
   color: #848484;
 }
 
 /* ---------- Count */
-.ais-ColorRefinementList-Count {
+.ais-ColorRefinementList-count {
   display: none;
 }
 
 /* ---------- RefinedIcon */
-.ais-ColorRefinementList-RefinedIcon {
+.ais-ColorRefinementList-refinedIcon {
   position: relative;
-  width: 13px;
-  height: 13px;
+  width: var(--refined-icon-size);
+  height: var(--refined-icon-size);
   color: var(--contrast-color);
+  transform: scale(0);
+  visibility: hidden;
+  opacity: 0;
+  transition: transform var(--transition-duration) ease-out 0s, opacity var(--transition-duration) linear 0s, visibility 0s linear var(--transition-duration);
 }
 
-.ais-ColorRefinementList-RefinedIcon:before {
-  content: '';
-  height: 2px;
-  background-color: currentcolor;
-  display: block;
-  position: absolute;
-  transform-origin: left center;
-  width: 6px;
-  border-top-left-radius: 1px;
-  border-bottom-left-radius: 1px;
-  top: 5px;
-  left: 1px;
-  transform: rotate(49deg) scale(0, 1);
-  animation-fill-mode: forwards;
-}
-
-.ais-ColorRefinementList-RefinedIcon:after {
-  content: '';
-  height: 2px;
-  background-color: currentcolor;
-  display: block;
-  position: absolute;
-  transform-origin: left center;
-  width: 13px;
-  border-top-right-radius: 1px;
-  border-bottom-right-radius: 1px;
-  top: 10px;
-  left: 4px;
-  transform: rotate(-49deg) scale(0, 1);
-  animation-fill-mode: forwards;
-}
-
-.ais-ColorRefinementList-Item.refined
-  .ais-ColorRefinementList-RefinedIcon:before {
-  animation: 100ms ease 0s 1 normal forwards running
-    ais-color-refinement-list-refined-icon-before-animation;
-}
-.ais-ColorRefinementList-Item.refined
-  .ais-ColorRefinementList-RefinedIcon:after {
-  animation: 100ms ease 50ms 1 normal forwards running
-    ais-color-refinement-list-refined-icon-after-animation;
-}
-
-/* ========================= Animations */
-@keyframes ais-color-refinement-list-refined-icon-before-animation {
-  0% {
-    transform: rotate(49deg) scale(0, 1);
-  }
-
-  100% {
-    transform: rotate(49deg) scale(1, 1);
-  }
-}
-
-@keyframes ais-color-refinement-list-refined-icon-after-animation {
-  0% {
-    transform: rotate(-49deg) scale(0, 1);
-  }
-
-  100% {
-    transform: rotate(-49deg) scale(1, 1);
+.ais-ColorRefinementList-item.ais-ColorRefinementList-itemRefined {
+  .ais-ColorRefinementList-refinedIcon {
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+    transition: transform var(--transition-duration) ease-out 0s, opacity var(--transition-duration) linear 0s, visibility 0s linear 0s;
   }
 }
