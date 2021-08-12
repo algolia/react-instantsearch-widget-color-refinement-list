@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/compare/v1.2.4...v1.3.0) (2021-08-12)
+
+
+### Features
+
+* add css variables ([6a9fa00](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/commit/6a9fa00c5dbcb85227b8199729726078e2b675f9))
+* **example:** add translations and responsive ([6c057ca](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/commit/6c057ca4f7851145935ca7c705b1ac622005c431))
+* add translations and className props ([ff1975c](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/commit/ff1975cd6ac0331eb59847c519b879d46ca49344))
+
 ### [1.2.4](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/compare/v1.2.3...v1.2.4) (2021-08-12)
 
 
