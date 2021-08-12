@@ -19,6 +19,7 @@
     "url": "https://github.com/algolia/react-instantsearch-widget-color-refinement-list/issues",
     "email": "support@algolia.com"
   },
+  "type": "module",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.es.js",
   "exports": {
@@ -61,7 +62,7 @@
     "@testing-library/react": "^12.0.0",
     "@tweakpane/core": "^1.0.6",
     "@types/jest": "^27.0.0",
-    "@types/node": "^16.4.13",
+    "@types/node": "^16.6.0",
     "@types/react": "^17.0.17",
     "@types/react-dom": "^17.0.9",
     "@types/react-instantsearch-dom": "^6.12.0",
