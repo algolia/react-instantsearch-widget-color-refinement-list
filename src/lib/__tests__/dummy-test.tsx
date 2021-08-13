@@ -4,10 +4,8 @@ import { Hits, InstantSearch } from 'react-instantsearch-dom';
 
 import { ColorRefinementList } from '../widget';
 
-const runAllMicroTasks = (): Promise<void> => new Promise(setImmediate);
-
 describe('nothing', () => {
-  it('tests nothing', async () => {
+  it('tests nothing', () => {
     const searchClient = {
       search(_requests: any[]) {
         return Promise.resolve({
@@ -32,7 +30,6 @@ describe('nothing', () => {
       </InstantSearch>
     );
 
-    await runAllMicroTasks();
     debug();
   });
 });

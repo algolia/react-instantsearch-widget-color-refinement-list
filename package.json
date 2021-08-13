@@ -43,7 +43,7 @@
     "build:styles": "sass --style=compressed --no-source-map src/style.scss:dist/style.css",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "npm run lint --fix",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --env=jsdom",
     "test:watch": "npm test -- --watch",
     "test:types": "tsc",
     "prerelease": "npm run build",

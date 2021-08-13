@@ -45,7 +45,6 @@ export const ColorRefinementList = ({
   showMoreLimit = 20,
   separator = ';',
   className,
-  transformItems,
   translate,
   searchable,
 }: ColorRefinementListProps) => {
@@ -99,12 +98,6 @@ export const ColorRefinementList = ({
     // If expanded, limit items to show more limit
     resultItems = resultItems.slice(0, showMoreLimit);
   }
-
-  // Transform items if transformItems props function exists
-  const transformedItems =
-    typeof transformItems === 'function'
-      ? transformItems(resultItems)
-      : resultItems;
 
   // Render an item
   const renderItem = (item: ColorHit) => {
@@ -171,7 +164,7 @@ export const ColorRefinementList = ({
         role="group"
         aria-label={translate('colors', refinedItemsLength)}
       >
-        {transformedItems.map(renderItem)}
+        {resultItems.map(renderItem)}
       </div>
       {showMore && items.length > limit && (
         <button

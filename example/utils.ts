@@ -20,7 +20,7 @@ export const useDebugger = () => {
 
   useEffect(() => {
     const pane = new Pane({
-      title: 'ColorRefinementListWidget',
+      title: 'ColorRefinementList widget',
       expanded: true,
       container: document.getElementById('debug') as HTMLElement,
     });
