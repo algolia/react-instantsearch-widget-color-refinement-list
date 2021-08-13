@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/compare/v1.4.0...v1.4.1) (2021-08-13)
+
+
+### Bug Fixes
+
+* remove useless transformItems ([fe3393d](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/commit/fe3393d47ea5924aceb829ba676610761547a4cb))
+
 ## [1.4.0](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/compare/v1.3.2...v1.4.0) (2021-08-12)
 
 

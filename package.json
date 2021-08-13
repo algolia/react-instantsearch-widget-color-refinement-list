@@ -1,6 +1,6 @@
 {
   "name": "@algolia/react-instantsearch-widget-color-refinement-list",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "React InstantSearch widget that filters the dataset based on color facet values",
   "keywords": [
     "instantsearch-widget",
