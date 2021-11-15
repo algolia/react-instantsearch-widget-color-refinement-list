@@ -27,7 +27,7 @@ This helps the user **quickly visualize** the kind of **color** that you have **
 - [Example](#example)
 - [Browser Support](#browser-support)
 - [Troubleshooting](#Troubleshooting)
-- [Contributing & Licence](#contributing--licence)
+- [Contributing & License](#contributing--license)
 
 # Get started
 
@@ -338,7 +338,7 @@ Please refer to the [browser support](https://www.algolia.com/doc/guides/buildin
 
 Encountering an issue? Before reaching out to support, we recommend heading to our [FAQ](https://www.algolia.com/doc/guides/building-search-ui/troubleshooting/faq/react/) where you will find answers for the most common issues and gotchas with the library.
 
-## Contributing & Licence
+## Contributing & License
 
 ### How to contribute
 
@@ -359,7 +359,7 @@ To start contributing to code, you need to:
 
 Please read [our contribution process](CONTRIBUTING.md) to learn more.
 
-### Licence
+### License
 
 Licensed under the [MIT license](LICENSE).
 
