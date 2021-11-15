@@ -39,15 +39,7 @@ const App = () => {
       <main className="container">
         <Panel header="Colors" className="panel__filters">
           <ColorRefinementList
-            attribute="hexColorCode"
-            sortByColor={props.sortByColor}
-            layout={props.layout}
-            shape={props.shape}
-            pinRefined={props.pinRefined}
-            limit={props.limit}
-            showMore={props.showMore}
-            showMoreLimit={props.showMoreLimit}
-            separator={props.separator}
+            {...props}
             translations={{
               refineOn: (value: string) => `Refine on ${value}`,
               colors: (refinedCount: number) =>

@@ -15,8 +15,8 @@ import {
 } from './utils';
 import type { ColorRefinementListExposed } from './widget';
 
-export type ColorRefinementListProps = RefinementListProvided &
-  ColorRefinementListExposed & {
+export type ColorRefinementListProps = ColorRefinementListExposed &
+  RefinementListProvided & {
     translate: (key: string, ...params: any) => string;
   };
 

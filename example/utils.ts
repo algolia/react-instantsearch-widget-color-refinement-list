@@ -5,6 +5,7 @@ import { Layout } from '../src';
 import { Shape } from '../src/lib/types';
 
 const defaultProps = {
+  attribute: 'hexColorCode',
   sortByColor: true,
   limit: 6,
   layout: Layout.Grid,
