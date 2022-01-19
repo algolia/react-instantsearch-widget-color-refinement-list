@@ -5,7 +5,7 @@ import { Layout } from '../src';
 import { Shape } from '../src/lib/types';
 
 const defaultProps = {
-  attribute: 'hexColorCode',
+  attribute: 'color.filter_group',
   sortByColor: true,
   limit: 6,
   layout: Layout.Grid,
@@ -13,7 +13,7 @@ const defaultProps = {
   pinRefined: false,
   showMore: false,
   showMoreLimit: 20,
-  separator: '//',
+  separator: ';',
 };
 
 export const useDebugger = () => {
