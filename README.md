@@ -65,26 +65,9 @@ ReactDOM.render(
   <InstantSearch indexName="indexName" searchClient={searchClient}>
     <ColorRefinementList
       attribute="color"
-      sortByColor={true}
+      separator=";"
       layout={Layout.Grid}
       shape={Shape.Circle}
-      limit={10}
-      showMore={false}
-      showMoreLimit={20}
-      separator=";"
-      translations={{
-        refineOn: (value: string) => `Refine on ${value}`,
-        colors: (refinedCount: number) =>
-          `Colors${refinedCount ? `, ${refinedCount} selected` : ''}`,
-        showMore: (expanded: boolean) =>
-          expanded ? 'Show less' : 'Show more',
-      }}
-      transformItems={(items) =>
-        items.map((item) => ({
-          ...item,
-          label: item.label.toUpperCase(),
-        }))
-      }
     />
   </InstantSearch>,
   document.getElementById('root')
