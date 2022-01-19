@@ -26,8 +26,7 @@
     ".": {
       "import": "./dist/index.es.js",
       "require": "./dist/index.cjs.js"
-    },
-    "./": "./"
+    }
   },
   "jsdelivr": "./dist/index.umd.js",
   "unpkg": "./dist/index.umd.js",
@@ -46,6 +45,7 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --env=jsdom",
     "test:watch": "npm test -- --watch",
     "test:types": "tsc",
+    "install": "install-peers",
     "prerelease": "npm run build",
     "release": "standard-version"
   },
@@ -83,6 +83,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.27.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "install-peers-cli": "^2.2.0",
     "jest": "^27.3.1",
     "prettier": "^2.4.1",
     "react-dom": "^17.0.2",
