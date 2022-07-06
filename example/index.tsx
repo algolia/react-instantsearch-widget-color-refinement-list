@@ -1,6 +1,6 @@
 import algoliasearch from 'algoliasearch/lite';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import type { Hit } from 'react-instantsearch-core';
 import {
   InstantSearch,
@@ -69,9 +69,4 @@ const App = () => {
   );
 };
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+createRoot(document.getElementById('root')!).render(<App />);
