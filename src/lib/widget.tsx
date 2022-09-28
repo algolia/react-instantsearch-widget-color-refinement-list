@@ -18,4 +18,10 @@ export interface ColorRefinementListExposed extends RefinementListExposed {
 }
 
 export const ColorRefinementList: ComponentType<ColorRefinementListExposed> =
-  connectRefinementList(ColorRefinementListComponent);
+  connectRefinementList(
+    ColorRefinementListComponent,
+    // @ts-ignore - second argument isn't documented on DefinitelyTyped
+    {
+      $$widgetType: 'cmty.colorRefinementList',
+    }
+  );
