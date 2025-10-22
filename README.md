@@ -4,8 +4,10 @@
   </a>
 </p>
 
-[React InstantSearch widget](https://www.algolia.com/?utm_source=react-instantsearch&utm_campaign=repository) that filters the dataset based on **color facet values**.  
-Equivalent of the offcial [RefinementList widget](https://www.algolia.com/doc/api-reference/widgets/refinement-list/react/) but displaying a **color indicator** instead of text facet values.
+[React InstantSearch widget](https://www.algolia.com/?utm_source=react-instantsearch&utm_campaign=repository) that filters the dataset based on **color facet values**.
+Equivalent of the official [RefinementList widget](https://www.algolia.com/doc/api-reference/widgets/refinement-list/react/) but displaying a **color indicator** instead of text facet values.
+
+**Compatible with React InstantSearch v7.** For v6 compatibility, please use version 1.4.7.
 
 This helps the user **quickly visualize** the kind of **color** that you have **in your index**. This is a great widget to refine records within multiple shades of a single color (like **choosing the color of a jean** for example).
 
@@ -19,6 +21,7 @@ This helps the user **quickly visualize** the kind of **color** that you have **
 
 - [Demo](#demo)
 - [Installation](#installation)
+- [Migration from v1](#migration-from-v1)
 - [Usage](#usage)
 - [Styling](#styling)
   - [CSS variables](#css-variables)
@@ -37,19 +40,44 @@ This helps the user **quickly visualize** the kind of **color** that you have **
 
 ## Installation
 
+### For React InstantSearch v7 (Current)
+
 ```bash
-npm install @algolia/react-instantsearch-widget-color-refinement-list
+npm install @algolia/react-instantsearch-widget-color-refinement-list react-instantsearch
 # or
-yarn add @algolia/react-instantsearch-widget-color-refinement-list
+yarn add @algolia/react-instantsearch-widget-color-refinement-list react-instantsearch
 ```
+
+### For React InstantSearch v6 (Legacy)
+
+If you're still using React InstantSearch v6, install version 1.4.7:
+
+```bash
+npm install @algolia/react-instantsearch-widget-color-refinement-list@1.4.7 react-instantsearch-dom
+# or
+yarn add @algolia/react-instantsearch-widget-color-refinement-list@1.4.7 react-instantsearch-dom
+```
+
+## Migration from v1
+
+Upgrading from v1.x (React InstantSearch v6) to v2.x (React InstantSearch v7)?
+
+📖 **See the complete [Migration Guide (v1 → v2)](./MIGRATION_V1_TO_V2.md)** for detailed step-by-step instructions, code examples, and troubleshooting tips.
+
+**Quick Summary:**
+- Update dependencies: `react-instantsearch-dom` → `react-instantsearch`
+- Update imports and search client initialisation
+- Widget API remains unchanged ✅
+
+For additional context, refer to the [React InstantSearch v7 migration guide](https://www.algolia.com/doc/guides/building-search-ui/upgrade-guides/react/).
 
 ## Usage
 
 ```tsx
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { InstantSearch, SearchBox, Hits, Panel } from 'react-instantsearch-dom';
-import algoliasearch from 'algoliasearch/lite';
+import { createRoot } from 'react-dom/client';
+import { InstantSearch, SearchBox, Hits } from 'react-instantsearch';
+import { liteClient as algoliasearch } from 'algoliasearch/lite';
 import {
   ColorRefinementList,
   Layout,
@@ -61,17 +89,20 @@ import '@algolia/react-instantsearch-widget-color-refinement-list/dist/style.css
 
 const searchClient = algoliasearch('appId', 'apiKey');
 
-ReactDOM.render(
+const App = () => (
   <InstantSearch indexName="indexName" searchClient={searchClient}>
+    <SearchBox />
     <ColorRefinementList
       attribute="color"
       separator=";"
       layout={Layout.Grid}
       shape={Shape.Circle}
     />
-  </InstantSearch>,
-  document.getElementById('root')
+    <Hits />
+  </InstantSearch>
 );
+
+createRoot(document.getElementById('root')!).render(<App />);
 ```
 
 ## Styling
@@ -313,7 +344,11 @@ Then open http://localhost:3000/ to see the example in action.
 
 ## Browser support
 
-Same as React InstantSearch it supports the **last two versions of major browsers** (Chrome, Edge, Firefox, Safari).
+This widget follows the same browser support as React InstantSearch v7:
+
+- **Last two versions of major browsers**: Chrome, Edge, Firefox, Safari
+- **React**: 16.8.0 or higher (Hooks support required)
+- **Node.js**: 14.x or higher (for development)
 
 Please refer to the [browser support](https://www.algolia.com/doc/guides/building-search-ui/installation/react/#browser-support) section in the documentation to use React InstantSearch and this widget on other browsers.
 

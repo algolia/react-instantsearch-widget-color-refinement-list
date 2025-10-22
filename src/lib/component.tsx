@@ -1,27 +1,47 @@
 import classNames from 'classnames';
 import React, { useMemo, useState } from 'react';
 import type { CSSProperties } from 'react';
-import type { RefinementListProvided } from 'react-instantsearch-core';
-import { translatable } from 'react-instantsearch-core';
-import { createClassNames } from 'react-instantsearch-dom';
 
 import { Layout, Shape } from './types';
-import type { ColorHit } from './types';
+import type { ColorHit, LayoutType, ShapeType } from './types';
 import {
   getContrastColor,
   parseItems,
   sortByColors,
   sortByLabel,
 } from './utils';
-import type { ColorRefinementListExposed } from './widget';
 
-export type ColorRefinementListProps = ColorRefinementListExposed &
-  RefinementListProvided & {
-    translate: (key: string, ...params: any) => string;
-  };
+export type TranslationsType = Partial<{
+  refineOn: (value: string) => string;
+  colors: (refinedCount: number) => string;
+  showMore: (expanded: boolean) => string;
+}>;
 
-const cx = (...args: string[]) =>
-  classNames(createClassNames('ColorRefinementList')(...args));
+export interface ColorRefinementListComponentProps {
+  items: any[];
+  refine: (value: string) => void;
+  sortByColor?: boolean;
+  layout?: LayoutType;
+  shape?: ShapeType;
+  pinRefined?: boolean;
+  limit?: number;
+  showMore?: boolean;
+  showMoreLimit?: number;
+  separator?: string;
+  className?: string;
+  translations?: TranslationsType;
+  canToggleShowMore?: boolean;
+  isShowingMore?: boolean;
+  toggleShowMore?: () => void;
+}
+
+const cx = (...args: (string | false | undefined)[]) => {
+  const baseClass = 'ais-ColorRefinementList';
+  return classNames(
+    baseClass,
+    ...args.map((arg) => (arg && arg !== '' ? `${baseClass}-${arg}` : false))
+  );
+};
 
 const RefinedIcon = () => (
   <svg
@@ -33,7 +53,15 @@ const RefinedIcon = () => (
   </svg>
 );
 
-export const ColorRefinementList = ({
+const defaultTranslations: Required<TranslationsType> = {
+  refineOn: (value: string) => `Refine on ${value}`,
+  colors: (refinedCount: number) =>
+    `Colors${refinedCount ? `, ${refinedCount} selected` : ''}`,
+  showMore: (expanded: boolean): string =>
+    expanded ? 'Show less' : 'Show more',
+};
+
+export const ColorRefinementListComponent = ({
   items,
   refine,
   sortByColor = true,
@@ -45,18 +73,12 @@ export const ColorRefinementList = ({
   showMoreLimit = 20,
   separator = ';',
   className,
-  translate,
-  searchable,
-}: ColorRefinementListProps) => {
-  if (typeof searchable !== 'undefined') {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `[ColorRefinementList] 'searchable' props is not supported yet.`
-    );
-  }
-
-  // Local state
-  const [expanded, setExpanded] = useState(!showMore);
+  translations: userTranslations,
+  canToggleShowMore = false,
+  isShowingMore = false,
+  toggleShowMore,
+}: ColorRefinementListComponentProps) => {
+  const translations = { ...defaultTranslations, ...userTranslations };
 
   let resultItems = items as ColorHit[];
 
@@ -83,7 +105,7 @@ export const ColorRefinementList = ({
   const notRefinedItems = resultItems.filter((hit) => !hit.isRefined);
   const refinedItemsLength = refinedItems.length;
 
-  if (!expanded) {
+  if (!isShowingMore) {
     if (pinRefined) {
       // If not expanded, concat refined items with not refined ones to reach the limit
       // Refined items are pinned at the top and never gets sliced
@@ -123,7 +145,7 @@ export const ColorRefinementList = ({
         className={cx('item', item.isRefined ? 'itemRefined' : '')}
         role="menuitemcheckbox"
         aria-checked={item.isRefined}
-        aria-label={translate('refineOn', item.label)}
+        aria-label={translations.refineOn(item.label)}
         onClick={(event) => {
           event.preventDefault();
           refine(item.value);
@@ -162,32 +184,19 @@ export const ColorRefinementList = ({
       <div
         className={cx('items')}
         role="group"
-        aria-label={translate('colors', refinedItemsLength)}
+        aria-label={translations.colors(refinedItemsLength)}
       >
         {resultItems.map(renderItem)}
       </div>
-      {showMore && items.length > limit && (
+      {showMore && canToggleShowMore && toggleShowMore && (
         <button
           type="button"
           className="ais-RefinementList-showMore"
-          onClick={() => setExpanded(!expanded)}
+          onClick={toggleShowMore}
         >
-          {translate('showMore', expanded)}
+          {translations.showMore(isShowingMore)}
         </button>
       )}
     </div>
   );
 };
-
-const translations = {
-  refineOn: (value: string) => `Refine on ${value}`,
-  colors: (refinedCount: number) =>
-    `Colors${refinedCount ? `, ${refinedCount} selected` : ''}`,
-  showMore: (expanded: boolean): string =>
-    expanded ? 'Show less' : 'Show more',
-};
-
-export type TranslationsType = Partial<typeof translations>;
-
-export const ColorRefinementListComponent =
-  translatable(translations)(ColorRefinementList);
