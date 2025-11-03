@@ -3,9 +3,10 @@ import { Pane } from 'tweakpane';
 
 import { Layout } from '../src';
 import { Shape } from '../src/lib/types';
+import { ATTRIBUTE, SEPARATOR } from '../config/algolia';
 
 const defaultProps = {
-  attribute: 'color.filter_group',
+  attribute: ATTRIBUTE,
   sortByColor: true,
   limit: 6,
   layout: Layout.Grid,
@@ -13,7 +14,7 @@ const defaultProps = {
   pinRefined: false,
   showMore: false,
   showMoreLimit: 20,
-  separator: ';',
+  separator: SEPARATOR,
 };
 
 export const useDebugger = () => {

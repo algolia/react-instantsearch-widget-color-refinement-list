@@ -1,28 +1,41 @@
 import algoliasearch from 'algoliasearch/lite';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import type { Hit } from 'react-instantsearch-core';
+import type { BaseHit } from 'instantsearch.js';
 import {
   InstantSearch,
   SearchBox,
   Hits,
-  Panel,
   Pagination,
-} from 'react-instantsearch-dom';
+} from 'react-instantsearch';
 
 import { ColorRefinementList } from '../src';
+import { APP_ID, API_KEY, INDEX_NAME } from '../config/algolia';
 
 import { useDebugger, capitalize } from './utils';
 
 import '../src/style.scss';
 import './index.scss';
 
-const searchClient = algoliasearch(
-  'latency',
-  'a4a3ef0b25a75b6df040f4d963c6e655'
+const searchClient = algoliasearch(APP_ID, API_KEY);
+
+// Simple Panel component for v7
+const Panel = ({
+  header,
+  className,
+  children
+}: {
+  header?: string;
+  className?: string;
+  children: React.ReactNode;
+}) => (
+  <div className={className}>
+    {header && <h3>{header}</h3>}
+    {children}
+  </div>
 );
 
-const HitComponent = ({ hit }: { hit: Hit }) => {
+const HitComponent = ({ hit }: { hit: BaseHit }) => {
   return (
     <>
       <img src={hit.image_urls[0]} alt={hit.name} />
@@ -36,7 +49,7 @@ const App = () => {
 
   return (
     <InstantSearch
-      indexName="STAGING_pwa_ecom_ui_template_products"
+      indexName={INDEX_NAME}
       searchClient={searchClient}
     >
       <main className="container">
