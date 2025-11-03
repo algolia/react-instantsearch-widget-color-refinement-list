@@ -1,6 +1,9 @@
-import type { RefinementListProvided } from 'react-instantsearch-core';
-
-export type DefaultHit = RefinementListProvided['items'][0];
+export type DefaultHit = {
+  value: string;
+  label: string;
+  count: number;
+  isRefined: boolean;
+};
 
 export type RgbValue = [number, number, number];
 

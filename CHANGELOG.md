@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/compare/v1.4.7...v2.0.0) (2024-10-22)
+
+### ⚠ BREAKING CHANGES
+
+* Migrated to React InstantSearch v7. This version is only compatible with `react-instantsearch` v7.x.
+* Minimum React version is now 16.8.0 (hooks requirement).
+* Peer dependency changed from `react-instantsearch-dom` to `react-instantsearch`.
+
+**Migration:** See the complete [Migration Guide (v1 → v2)](./MIGRATION_V1_TO_V2.md) for step-by-step instructions.
+
+### Features
+
+* Migrated from connector pattern to hooks-based architecture using `useRefinementList`
+* Updated to use React InstantSearch v7 APIs
+* Maintained full backward compatibility with widget props
+* Enhanced TypeScript types for better IDE support
+
+### Internal Changes
+
+* Replaced `connectRefinementList` connector with `useRefinementList` hook
+* Removed deprecated `translatable` HOC in favour of direct translation props
+* Removed `createClassNames` utility, implemented custom class name builder
+* Updated all internal dependencies to v7 equivalents
+* Updated example application to demonstrate v7 usage
+
 ### [1.4.7](https://github.com/algolia/react-instantsearch-widget-color-refinement-list/compare/v1.4.6...v1.4.7) (2022-10-06)
 
 
